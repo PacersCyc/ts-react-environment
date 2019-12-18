@@ -4,7 +4,7 @@
   "description": "typescript-react基本环境搭建",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server --config build/webpack.config.js --mode development",
+    "dev": "webpack-dev-server --config build/webpack.config.js --mode development --hot",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -30,6 +30,7 @@
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
     "node-sass": "^4.13.0",
+    "react-hot-loader": "^4.12.18",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.2",
     "ts-import-plugin": "^1.6.2",
