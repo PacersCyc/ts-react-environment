@@ -19,6 +19,16 @@ module.exports = {
             options: {}
           }
         ]
+      },
+      {
+        test: /\.scss$/,
+        // 只针对src下.scss文件编译
+        include: [path.join(__dirname, '../', 'src')],
+        use: [
+          'style-loader',
+          'css-loader',
+          'sass-loader'
+        ]
       }
     ]
   },
