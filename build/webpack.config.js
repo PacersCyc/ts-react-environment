@@ -1,6 +1,8 @@
 const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const tsImportPluginFactory = require('ts-import-plugin')
+const theme = require('../theme')
 
 module.exports = {
   entry: {
@@ -18,8 +20,18 @@ module.exports = {
           {
             loader: 'awesome-typescript-loader',
             options: {
+              transpileOnly: true,
               useCache: true,
-              cacheDirectory: path.join(__dirname, '../', '.cache-loader')
+              cacheDirectory: path.join(__dirname, '../', '.cache-loader'),
+              getCustomTransformers: () => ({
+                before: [
+                  tsImportPluginFactory({
+                    libraryName: 'antd',
+                    libraryDirectory: 'lib',
+                    style: true
+                  })
+                ]
+              })
             }
           }
         ]
@@ -56,6 +68,20 @@ module.exports = {
               sassOptions: {
                 includePaths: [path.join(__dirname, '../', 'src/styles')]
               }
+            }
+          }
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'less-loader',
+            options: {
+              javascriptEnabled: true,
+              modifyVars: theme
             }
           }
         ]
