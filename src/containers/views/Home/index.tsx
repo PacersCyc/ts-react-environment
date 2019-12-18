@@ -1,11 +1,12 @@
 import * as React from 'react'
+import * as styles from './index.scss'
 
 import { ComponentExt } from '@utils/reactExt'
 
 class Home extends ComponentExt {
   render() {
     return (
-      <div>Home</div>
+      <div className={styles.test}>Home</div>
     )
   }
 }
