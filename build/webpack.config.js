@@ -40,7 +40,14 @@ module.exports = {
               localsConvention: 'camelCase'
             }
           },
-          'sass-loader'
+          {
+            loader: 'sass-loader',
+            options: {
+              sassOptions: {
+                includePaths: [path.join(__dirname, '../', 'src/styles')]
+              }
+            }
+          }
         ]
       }
     ]

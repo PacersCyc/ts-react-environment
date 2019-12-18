@@ -1,8 +1,11 @@
+@import 'var.scss';
+
 .test {
-  color: blue;
-  font-size: 40px;
+  color: $red;
+  width: 50px;
+  @include ellipsis;
 
   .test-child {
-    color: red;
+    color: blue;
   }
 }
