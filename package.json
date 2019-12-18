@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/PacersCyc/ts-react-environment#readme",
   "devDependencies": {
+    "@svgr/webpack": "^4.3.3",
     "@teamsupercell/typings-for-css-modules-loader": "^2.1.0",
     "@types/antd": "^1.0.0",
     "@types/react": "^16.9.16",

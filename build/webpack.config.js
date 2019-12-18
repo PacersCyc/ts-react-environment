@@ -92,6 +92,11 @@ module.exports = {
             }
           }
         ]
+      },
+      {
+        test: /\.svg$/,
+        loader: '@svgr/webpack',
+        include: path.join(__dirname, '../', 'src')
       }
     ]
   },

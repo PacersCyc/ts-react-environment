@@ -3,6 +3,7 @@ import { observer, inject } from 'mobx-react'
 import { hot } from 'react-hot-loader'
 
 import { ComponentExt } from '@utils/reactExt'
+import HomeSvg from '@assets/home-bg-top.svg'
 
 // interface IGlobalStore {
 //   increase: (num: number) => void
@@ -29,6 +30,7 @@ class Counter extends ComponentExt<IProps> {
         <div>{num}</div>
         <button onClick={this.increase}>增加</button>
         <button>减少</button>
+        <HomeSvg />
       </div>
     )
   }
