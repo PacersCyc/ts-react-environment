@@ -3,6 +3,7 @@ import { hot } from 'react-hot-loader'
 import { HashRouter as Router, Switch, Route } from 'react-router-dom'
 import Loadable from 'react-loadable'
 
+console.log(123)
 function Loading () {
   return <div>loading...</div>
 }
