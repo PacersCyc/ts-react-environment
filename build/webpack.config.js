@@ -2,7 +2,10 @@ const path = require('path')
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const tsImportPluginFactory = require('ts-import-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const theme = require('../theme')
+
+const devMode = process.env.NODE_ENV !== 'production'
 
 module.exports = {
   entry: {
@@ -10,7 +13,7 @@ module.exports = {
   },
   output: {
     path: path.join(__dirname, '../', 'dist'),
-    filename: '[name].js'
+    filename: 'js/[name].js'
   },
   module: {
     rules: [
@@ -48,7 +51,8 @@ module.exports = {
         // 只针对src下.scss文件编译
         include: [path.join(__dirname, '../', 'src')],
         use: [
-          'style-loader',
+          // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          MiniCssExtractPlugin.loader,
           {
             loader: 'cache-loader',
             options: {
@@ -82,7 +86,8 @@ module.exports = {
       {
         test: /\.less$/,
         use: [
-          'style-loader',
+          // devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          MiniCssExtractPlugin.loader,
           'css-loader',
           {
             loader: 'less-loader',
@@ -102,7 +107,15 @@ module.exports = {
   },
   plugins: [
     new htmlWebpackPlugin({
-      template: 'build/tpl/index.html'
+      template: 'build/tpl/index.html',
+      minify: {
+        removeComments: true,
+        collapseWhitespace: true,
+        removeAttributeQuotes: true,
+      }
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css'
     })
   ],
   resolve: {
