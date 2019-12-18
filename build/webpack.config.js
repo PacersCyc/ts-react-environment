@@ -125,5 +125,20 @@ module.exports = {
         configFile: path.join(__dirname, '../', 'tsconfig.json')
       })
     ]
+  },
+  optimization: {
+    runtimeChunk: {
+      name: 'manifest'
+    },
+    splitChunks: {
+      cacheGroups: {
+        default: false,
+        commons: {
+          test: /[\\/]node_modules[\\/]]/,
+          name: 'vendor',
+          chunks: 'all'
+        }
+      }
+    }
   }
 }
