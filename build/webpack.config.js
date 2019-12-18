@@ -17,7 +17,10 @@ module.exports = {
         use: [
           {
             loader: 'awesome-typescript-loader',
-            options: {}
+            options: {
+              useCache: true,
+              cacheDirectory: path.join(__dirname, '../', '.cache-loader')
+            }
           }
         ]
       },
@@ -27,6 +30,12 @@ module.exports = {
         include: [path.join(__dirname, '../', 'src')],
         use: [
           'style-loader',
+          {
+            loader: 'cache-loader',
+            options: {
+              cacheDirectory: path.join(__dirname, '../', '.cache-loader')
+            }
+          },
           // typings-for-css-modules-loader作者不再维护, 采用其他开发者fork版本 关于css-loader依赖问题issue详情见https://github.com/Jimdo/typings-for-css-modules-loader/issues/94
           {
             loader: '@teamsupercell/typings-for-css-modules-loader',
