@@ -1,11 +1,11 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
 
-import './index.scss'
+import * as styles from './index.scss'
 
 const render = () => {
   ReactDOM.render(
-    <div className="test">123</div>,
+    <div className={styles.test}>123</div>,
     document.querySelector('#app')
   )
 }

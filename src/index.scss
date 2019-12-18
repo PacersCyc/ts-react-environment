@@ -1,4 +1,8 @@
 .test {
   color: blue;
   font-size: 40px;
+
+  .test-child {
+    color: red;
+  }
 }
